@@ -1,1 +1,1 @@
-[Open The Builder’s Gazette][(https://komminithin.github.io/KOMMINITHIN/)]
+[Open The Builder’s Gazette](https://komminithin.github.io/KOMMINITHIN/)
