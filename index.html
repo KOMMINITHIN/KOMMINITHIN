@@ -4,27 +4,21 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>The Builder's Gazette — Kommi Nithin</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IM+Fell+DW+Pica:ital@0;1&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display+SC:wght@700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 
 :root{
-  --ink:#111008;
-  --ink2:#2d2a1e;
-  --ink3:#5c5740;
-  --ink4:#8a8470;
-  --paper:#f5f0e8;
-  --paper2:#ede8dc;
-  --paper3:#e6dfd0;
-  --cream:#faf7f2;
-  --rule:#2d2a1e;
-  --accent:#c8922a;
-  --accent2:#a3722a;
-  --accent-light:#f7e9cc;
-  --red:#8b2020;
-  --red-light:#f5e0e0;
-  --col-border:rgba(45,42,30,0.25);
+  --ink:#1c1a12;          /* Heavy oxidized iron-gall ink */
+  --ink-faded:#4a4536;    /* Faded type ink */
+  --paper:#e9dfcc;        /* Deeply aged, sun-bleached newsprint */
+  --paper-dark:#ded2ba;   /* Shadows/weathered creases */
+  --paper-light:#f2e9da;  /* Refined stock highlights */
+  --accent:#9e7223;       /* Tarnished gold leaf */
+  --accent-faded:#b89042;
+  --red:#6b1b1b;          /* Dried vermilion stamp ink */
+  --col-border:rgba(28,26,18,0.35);
 }
 
 body{
@@ -34,334 +28,335 @@ body{
   overflow-x:hidden;
 }
 
-/* noise texture overlay */
+/* Enhanced vintage noise and paper texture overlay */
 body::after{
   content:'';
   position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:999;opacity:0.4;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;opacity:0.6;
 }
 
-/* ─── TICKER ─── */
+/* ─── VINTAGE TICKER / TELETYPE ─── */
 .ticker{
-  background:var(--ink);color:var(--accent-light);
-  padding:7px 0;overflow:hidden;white-space:nowrap;
-  font-family:'IM Fell DW Pica',serif;font-size:12px;letter-spacing:0.06em;
-  border-bottom:2px solid var(--accent);
+  background:var(--ink);color:var(--paper-light);
+  padding:8px 0;overflow:hidden;white-space:nowrap;
+  font-family:'Playfair Display SC',serif;font-size:11px;letter-spacing:0.12em;
+  border-bottom:3px double var(--accent);
 }
-.ticker-inner{display:inline-block;animation:scroll-left 28s linear infinite;}
+.ticker-inner{display:inline-block;animation:scroll-left 32s linear infinite;}
 @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.ticker-sep{color:var(--accent);margin:0 20px;}
+.ticker-sep{color:var(--accent);margin:0 25px;}
 
-/* ─── MASTHEAD ─── */
+/* ─── CLASSIC BROADCAST MASTHEAD ─── */
 .masthead{
-  background:var(--cream);
-  border-bottom:1px solid var(--rule);
+  background:var(--paper-light);
+  border-bottom:4px double var(--ink);
   position:relative;
   overflow:hidden;
 }
 .masthead-meta{
   display:flex;justify-content:space-between;align-items:center;
-  padding:8px 36px;
-  border-bottom:1px solid var(--col-border);
-  font-family:'IM Fell DW Pica',serif;
-  font-size:11.5px;color:var(--ink3);letter-spacing:0.04em;
+  padding:10px 40px;
+  border-bottom:1px solid var(--ink);
+  font-family:'Playfair Display SC',serif;
+  font-size:12px;color:var(--ink-faded);letter-spacing:0.05em;
 }
 .meta-live{
   display:inline-flex;align-items:center;gap:6px;
   color:var(--red);font-weight:700;
 }
 .live-dot{
-  width:7px;height:7px;border-radius:50%;
+  width:6px;height:6px;border-radius:50%;
   background:var(--red);
-  animation:blink-dot 1.6s ease-in-out infinite;
+  animation:blink-dot 1.8s ease-in-out infinite;
 }
-@keyframes blink-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.3;transform:scale(0.7);}}
+@keyframes blink-dot{0%,100%{opacity:1;}50%{opacity:0.2;}}
 
 .masthead-title-wrap{
   text-align:center;
-  padding:22px 36px 16px;
+  padding:30px 40px 20px;
   position:relative;
 }
 .edition-flag{
   display:inline-block;
-  background:var(--ink);color:var(--accent-light);
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
-  padding:3px 14px;margin-bottom:14px;
+  border:1px solid var(--ink);
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;letter-spacing:0.2em;
+  padding:4px 18px;margin-bottom:16px;
 }
 .title-ornament{
   font-family:'Playfair Display',serif;
-  font-size:11px;color:var(--ink3);letter-spacing:0.3em;text-transform:uppercase;
-  margin-bottom:6px;
+  font-size:13px;color:var(--accent);letter-spacing:0.35em;
+  margin-bottom:10px;
 }
 .gazette-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(56px,10vw,104px);
-  font-weight:900;line-height:0.92;
-  letter-spacing:-0.03em;
+  font-family:'UnifrakturMaguntia',Georgia,serif;
+  font-size:clamp(64px,12vw,128px);
+  line-height:0.85;
+  font-weight:400;
   color:var(--ink);
   position:relative;
   display:inline-block;
-}
-.gazette-title::after{
-  content:'';position:absolute;
-  bottom:-8px;left:0;right:0;height:4px;
-  background:var(--accent);
+  letter-spacing: -0.02em;
 }
 .gazette-sub{
-  font-family:'IM Fell DW Pica',serif;
-  font-style:italic;font-size:14px;
-  color:var(--ink3);letter-spacing:0.1em;
-  margin-top:18px;
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:16px;
+  color:var(--ink-faded);letter-spacing:0.05em;
+  margin-top:16px;
 }
 .masthead-rule-set{
-  display:flex;flex-direction:column;gap:3px;
-  padding:0 36px 12px;
+  display:flex;flex-direction:column;gap:2px;
+  padding:0 40px 10px;
 }
-.rule-thick{height:4px;background:var(--ink);}
-.rule-thin{height:1px;background:var(--rule);}
-.rule-accent{height:2px;background:var(--accent);}
+.rule-thick{height:5px;background:var(--ink);}
+.rule-thin{height:1px;background:var(--ink);}
 
-/* ─── BYLINE STRIP ─── */
+/* ─── BYLINE CHRONICLE STRIP ─── */
 .byline-strip{
   display:flex;justify-content:space-between;align-items:center;
-  padding:7px 36px;
-  background:var(--paper2);
-  border-bottom:2px solid var(--ink);
-  font-family:'IM Fell DW Pica',serif;
-  font-size:11.5px;color:var(--ink3);
-  flex-wrap:wrap;gap:4px;
+  padding:10px 40px;
+  background:var(--paper-dark);
+  border-bottom:1px solid var(--ink);
+  font-family:'Playfair Display SC',serif;
+  font-size:12px;color:var(--ink);
+  letter-spacing:0.08em;
+  flex-wrap:wrap;gap:6px;
 }
 
-/* ─── PAGE WRAPPER ─── */
-.page{max-width:1040px;margin:0 auto;padding:0 28px 80px;}
+/* ─── TOTAL REAL ESTATE BROADsheet WRAPPER ─── */
+.page{max-width:100%;margin:0 auto;padding:0 40px 80px;}
 
 /* ─── SECTIONS ─── */
-.section{padding:32px 0;border-bottom:2px solid var(--ink);}
-.section-last{padding:32px 0;}
+.section{padding:36px 0;border-bottom:1px solid var(--ink);}
+.section-last{padding:36px 0;}
 
-/* ─── SECTION LABEL ─── */
+/* ─── HISTORIC SECTION LABEL ─── */
 .section-label{
   display:flex;align-items:center;gap:0;
-  margin-bottom:20px;
+  margin-bottom:24px;
 }
 .section-label-text{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10.5px;font-weight:700;
-  letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--cream);
+  font-family:'Playfair Display SC',serif;
+  font-size:12px;font-weight:900;
+  letter-spacing:0.2em;
+  color:var(--paper-light);
   background:var(--ink);
-  padding:5px 14px;
+  padding:6px 16px;
   white-space:nowrap;
 }
-.section-label-line{flex:1;height:1px;background:var(--rule);}
+.section-label-line{flex:1;height:1px;background:var(--ink);}
 .section-label-accent{
-  background:var(--accent);
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10.5px;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--ink);padding:5px 10px;
+  border:1px solid var(--ink);
+  background:transparent;
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;letter-spacing:0.15em;
+  color:var(--ink);padding:5px 12px;
 }
 
-/* ─── HERO STORY ─── */
+/* ─── BROAD SHEET COLUMNAR HERO GRID ─── */
 .hero-grid{
   display:grid;
-  grid-template-columns:1fr 340px;
+  grid-template-columns:3.5fr 1.2fr;
   gap:0;
-  border:1px solid var(--rule);
+  border:1px solid var(--ink);
 }
 .hero-main{
-  padding:28px 28px 28px 0;
-  border-right:1px solid var(--col-border);
+  padding:30px 30px 30px 0;
+  border-right:1px solid var(--ink);
 }
-.hero-sidebar{padding:28px 0 28px 28px;}
+.hero-sidebar{padding:30px 0 30px 30px;}
 
 .kicker{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--accent2);
-  margin-bottom:10px;
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;letter-spacing:0.18em;
+  color:var(--accent);
+  margin-bottom:12px;
 }
 .headline-xl{
   font-family:'Playfair Display',serif;
-  font-size:clamp(32px,4.5vw,52px);
-  font-weight:900;line-height:1.04;
-  letter-spacing:-0.02em;color:var(--ink);
-  margin-bottom:14px;
+  font-size:clamp(36px,5vw,60px);
+  font-weight:900;line-height:1.02;
+  letter-spacing:-0.03em;color:var(--ink);
+  margin-bottom:16px;
 }
-.headline-xl em{font-style:italic;color:var(--accent2);}
+.headline-xl em{font-style:italic;font-weight:400;color:var(--ink-faded);}
 .deck{
   font-family:'Libre Baskerville',serif;
-  font-size:14px;font-weight:400;font-style:italic;
-  color:var(--ink2);line-height:1.65;
+  font-size:14.5px;font-weight:400;font-style:italic;
+  color:var(--ink-faded);line-height:1.7;
   border-top:1px solid var(--col-border);
   border-bottom:1px solid var(--col-border);
-  padding:10px 0;margin-bottom:16px;
+  padding:12px 0;margin-bottom:20px;
 }
 .body{
   font-family:'Libre Baskerville',serif;
-  font-size:13px;line-height:1.85;
-  color:var(--ink2);
-  column-count:2;column-gap:24px;
+  font-size:13.5px;line-height:1.9;
+  color:var(--ink);
+  column-count:3;column-gap:30px;
   column-rule:1px solid var(--col-border);
+  text-align: justify;
 }
-.body p+p{text-indent:1.4em;}
+.body p+p{text-indent:1.8em;}
 .drop::first-letter{
-  font-family:'Playfair Display',serif;
-  font-size:4.8em;font-weight:900;
-  float:left;line-height:0.78;
-  margin:5px 7px -4px 0;
+  font-family:'UnifrakturMaguntia',serif;
+  font-size:4.2em;
+  float:left;line-height:0.75;
+  margin:4px 10px -2px 0;
   color:var(--ink);
 }
 
-/* ─── AVATAR ─── */
+/* ─── ENGRAVING STYLE AVATAR ─── */
 .avatar-block{
   display:flex;flex-direction:column;align-items:center;
-  gap:12px;margin-bottom:20px;
+  gap:14px;margin-bottom:24px;
 }
 .avatar-frame{
-  border:3px solid var(--ink);
-  outline:1px solid var(--ink);
-  outline-offset:4px;
-  width:110px;height:110px;border-radius:50%;overflow:hidden;
+  border:2px solid var(--ink);
+  padding:4px;
+  background:var(--paper-light);
+  width:120px;height:120px;border-radius:0%; /* Crisp traditional square frames */
+  overflow:hidden;
   position:relative;
 }
-.avatar-frame img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(20%) contrast(1.05);}
+.avatar-frame img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter: grayscale(100%) contrast(140%) sepia(30%); /* Genuine ancient halftone print look */
+}
 .avatar-name{
-  font-family:'Playfair Display',serif;
+  font-family:'Playfair Display SC',serif;
   font-size:18px;font-weight:900;
-  color:var(--ink);text-align:center;letter-spacing:-0.01em;
+  color:var(--ink);text-align:center;
 }
 .avatar-title{
-  font-family:'IM Fell DW Pica',serif;
-  font-style:italic;font-size:12px;color:var(--ink3);
-  text-align:center;letter-spacing:0.06em;
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:13px;color:var(--ink-faded);
+  text-align:center;
 }
 
-/* ─── SIDEBAR FACTS ─── */
-.fact-rule{height:1px;background:var(--rule);margin:14px 0;}
+/* ─── CHRONICLE NOTICES ─── */
+.fact-rule{height:3px;background:var(--ink);margin:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);background:none;}
 .fact-label{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--ink3);margin-bottom:5px;
+  font-family:'Playfair Display SC',serif;
+  font-size:10px;letter-spacing:0.18em;
+  color:var(--ink-faded);margin-bottom:6px;
 }
 .fact-value{
   font-family:'Playfair Display',serif;
-  font-size:15px;font-weight:700;color:var(--ink);
+  font-size:16px;font-weight:700;color:var(--ink);
 }
 .fact-small{
   font-family:'Libre Baskerville',serif;
-  font-size:12px;color:var(--ink2);line-height:1.6;
+  font-size:12px;color:var(--ink-faded);line-height:1.65;
 }
 
-/* ─── PULL QUOTE ─── */
+/* ─── BLOCK QUOTES & TESTIMONIALS ─── */
 .pull-quote{
-  border-top:3px solid var(--ink);
+  border-top:1px solid var(--ink);
   border-bottom:1px solid var(--ink);
-  padding:14px 0;margin:16px 0;
+  padding:16px 0;margin:20px 0;
   font-family:'Playfair Display',serif;
-  font-size:16px;font-style:italic;font-weight:700;
-  line-height:1.38;color:var(--ink);
+  font-size:17px;font-style:italic;font-weight:700;
+  line-height:1.4;color:var(--ink);
+  text-align:center;
 }
-.pull-quote.gold{border-top-color:var(--accent);color:var(--accent2);}
+.pull-quote.gold{border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);color:var(--accent);}
 
-/* ─── TYPEWRITER ─── */
+/* ─── TERMINAL DOCKETS ─── */
 .tw-block{
-  background:var(--ink);color:var(--accent-light);
-  padding:10px 14px;
+  background:var(--ink);color:var(--paper-light);
+  padding:12px 16px;
   font-family:'Fira Code',monospace;font-size:12px;
-  letter-spacing:0.04em;
+  letter-spacing:0.02em;
   display:flex;align-items:center;gap:8px;
 }
-.tw-prompt{color:var(--accent);font-weight:500;}
+.tw-prompt{color:var(--accent-faded);font-weight:500;}
 #tw-text::after{content:'█';animation:cur 0.85s step-end infinite;font-size:9px;}
 @keyframes cur{0%,100%{opacity:1;}50%{opacity:0;}}
 
-/* ─── STATS ROW ─── */
+/* ─── STATISTICAL LEDGER ROW ─── */
 .stats-row{
   display:grid;grid-template-columns:repeat(5,1fr);
-  border:1px solid var(--rule);
-  border-bottom:2px solid var(--rule);
-  background:var(--cream);
+  border:1px solid var(--ink);
+  border-bottom:3px double var(--ink);
+  background:var(--paper-light);
 }
 .stat-cell{
-  padding:20px 12px 16px;
+  padding:24px 14px 20px;
   border-right:1px solid var(--col-border);
   text-align:center;
-  position:relative;
-  overflow:hidden;
 }
 .stat-cell:last-child{border-right:none;}
 .stat-num{
-  font-family:'Playfair Display',serif;
+  font-family:'Playfair Display SC',serif;
   font-size:0;font-weight:900;line-height:1;
   color:var(--ink);transition:font-size 0s;
 }
-.stat-num.counted{font-size:38px;}
-.stat-num.gold{color:var(--accent2);}
+.stat-num.counted{font-size:42px;}
+.stat-num.gold{color:var(--accent);}
 .stat-lbl{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--ink4);margin-top:5px;
+  font-family:'Playfair Display SC',serif;
+  font-size:10px;letter-spacing:0.15em;
+  color:var(--ink-faded);margin-top:8px;
 }
 
-/* ─── THREE-COL LAYOUT ─── */
+/* ─── 3-COLUMN ESSAY GRID ─── */
 .cols-3{
   display:grid;grid-template-columns:1fr 1fr 1fr;
-  border:1px solid var(--rule);
+  border:1px solid var(--ink);
   border-top:none;
 }
 .cols-2{
-  display:grid;grid-template-columns:2fr 1fr;
-  border:1px solid var(--rule);
+  display:grid;grid-template-columns:2.5fr 1fr;
+  border:1px solid var(--ink);
   border-top:none;
 }
 .cols-2-eq{
   display:grid;grid-template-columns:1fr 1fr;
-  border:1px solid var(--rule);
+  border:1px solid var(--ink);
   border-top:none;
 }
 .col{
-  padding:22px 22px 26px;
+  padding:26px 26px 30px;
   border-right:1px solid var(--col-border);
 }
 .col:last-child{border-right:none;}
 .col-label{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;letter-spacing:0.2em;
   color:var(--ink);
-  border-bottom:2px solid var(--ink);
-  padding-bottom:6px;margin-bottom:14px;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:6px;margin-bottom:16px;
 }
-.col-label.gold{border-color:var(--accent);color:var(--accent2);}
+.col-label.gold{border-color:var(--accent);color:var(--accent);}
 .col-headline{
   font-family:'Playfair Display',serif;
-  font-size:17px;font-weight:700;line-height:1.18;
-  color:var(--ink);margin-bottom:9px;letter-spacing:-0.01em;
+  font-size:19px;font-weight:700;line-height:1.2;
+  color:var(--ink);margin-bottom:12px;
 }
-.col-headline.italic{font-style:italic;}
+.col-headline.italic{font-style:italic;font-weight:400;}
 .col-body{
   font-family:'Libre Baskerville',serif;
-  font-size:12.5px;line-height:1.8;
-  color:var(--ink2);
+  font-size:13px;line-height:1.85;
+  color:var(--ink);
 }
 .col-body strong{font-weight:700;color:var(--ink);}
 
-/* ─── TECH TAGS ─── */
+/* ─── ARCHIVAL TYPESET TAGS ─── */
 .tag-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
 .tag{
-  font-family:'Fira Code',monospace;font-size:10.5px;
-  padding:3px 9px;
+  font-family:'Fira Code',monospace;font-size:10px;
+  padding:4px 10px;
   border:1px solid var(--ink);
-  color:var(--ink2);letter-spacing:0.03em;
-  transition:background 0.2s,color 0.2s;cursor:default;
+  color:var(--ink);background:transparent;
+  letter-spacing:0.02em;
 }
-.tag:hover{background:var(--ink);color:var(--accent-light);}
-.tag.gold{background:var(--ink);color:var(--accent-light);border-color:var(--ink);}
+.tag.gold{background:var(--ink);color:var(--paper-light);}
 
-/* ─── PROJECTS ─── */
+/* ─── CHRONICLE RECORD ENTRIES ─── */
 .proj-entry{
-  padding:14px 0;
+  padding:16px 0;
   border-bottom:1px solid var(--col-border);
   opacity:0;transform:translateX(-16px);
   transition:opacity 0.5s ease,transform 0.5s ease;
@@ -370,49 +365,47 @@ body::after{
 .proj-entry:last-child{border-bottom:none;}
 .proj-rank{
   font-family:'Playfair Display',serif;
-  font-size:10px;color:var(--ink4);margin-bottom:2px;
+  font-size:11px;color:var(--ink-faded);margin-bottom:4px;
   font-style:italic;
 }
 .proj-name{
   font-family:'Playfair Display',serif;
-  font-size:15px;font-weight:700;color:var(--ink);
-  margin-bottom:4px;letter-spacing:-0.01em;
+  font-size:16px;font-weight:700;color:var(--ink);
+  margin-bottom:6px;
 }
-.proj-name a{color:inherit;text-decoration:none;}
-.proj-name a:hover{color:var(--accent2);text-decoration:underline;}
+.proj-name a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--ink);}
+.proj-name a:hover{color:var(--accent);border-bottom-style:solid;}
 .proj-desc{
   font-family:'Libre Baskerville',serif;
-  font-size:12px;color:var(--ink2);line-height:1.6;
+  font-size:12.5px;color:var(--ink);line-height:1.65;
 }
 
-/* ─── BUILDING ITEMS ─── */
+/* ─── PARAGRAPH BULLET SCROLLS ─── */
 .build-item{
-  display:flex;align-items:flex-start;gap:12px;
-  padding:12px 0;border-bottom:1px solid var(--col-border);
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--col-border);
   opacity:0;transform:translateY(12px);
   transition:opacity 0.5s ease,transform 0.5s ease;
 }
 .build-item.visible{opacity:1;transform:translateY(0);}
 .build-item:last-child{border-bottom:none;}
 .build-num{
-  font-family:'Playfair Display',serif;
-  font-size:22px;font-weight:900;color:var(--accent);
+  font-family:'UnifrakturMaguntia',serif;
+  font-size:24px;color:var(--accent);
   line-height:1;min-width:28px;flex-shrink:0;
-  margin-top:-2px;
 }
-.build-body{font-family:'Libre Baskerville',serif;font-size:12.5px;color:var(--ink2);line-height:1.65;}
-.build-body strong{font-weight:700;color:var(--ink);}
+.build-body{font-family:'Libre Baskerville',serif;font-size:13px;color:var(--ink);line-height:1.7;}
 
-/* ─── SKILLS RADAR / BARS ─── */
-.skill-bar-wrap{margin-bottom:12px;}
+/* ─── LEDGER PROFICIENCY BARS ─── */
+.skill-bar-wrap{margin-bottom:14px;}
 .skill-bar-label{
   display:flex;justify-content:space-between;
-  font-family:'IM Fell DW Pica',serif;font-size:12px;
-  color:var(--ink2);margin-bottom:4px;letter-spacing:0.04em;
+  font-family:'Playfair Display SC',serif;font-size:11px;
+  color:var(--ink);margin-bottom:4px;
 }
 .skill-bar-track{
-  height:7px;background:var(--paper3);
-  border:1px solid var(--col-border);
+  height:6px;background:var(--paper-dark);
+  border:1px solid var(--ink);
 }
 .skill-bar-fill{
   height:100%;background:var(--ink);width:0%;
@@ -420,118 +413,112 @@ body::after{
 }
 .skill-bar-fill.gold{background:var(--accent);}
 
-/* ─── SOCIAL TABLE ─── */
+/* ─── GAZETTE SOCIAL DIRECTORY ─── */
 .social-table{width:100%;border-collapse:collapse;margin-top:10px;}
 .social-table td{
-  padding:9px 0;border-bottom:1px solid var(--col-border);
-  font-family:'Libre Baskerville',serif;font-size:12.5px;color:var(--ink2);
-  vertical-align:middle;
+  padding:10px 0;border-bottom:1px solid var(--col-border);
+  font-family:'Libre Baskerville',serif;font-size:13px;color:var(--ink);
 }
 .social-table tr:last-child td{border-bottom:none;}
 .social-table td:first-child{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--ink3);width:70px;font-weight:700;
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;letter-spacing:0.1em;
+  color:var(--ink-faded);width:90px;font-weight:700;
 }
-.social-table a{color:var(--accent2);text-decoration:none;}
-.social-table a:hover{text-decoration:underline;}
+.social-table a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);}
+.social-table a:hover{color:var(--accent);}
 
-/* ─── ACCENT BAND ─── */
+/* ─── PROMINENT ADVERTISEMENT EDITORIAL BAND ─── */
 .accent-band{
   background:var(--ink);
-  padding:18px 36px;
+  padding:24px 40px;
   display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:10px;
-  border-top:3px solid var(--accent);
-  border-bottom:3px solid var(--accent);
+  flex-wrap:wrap;gap:12px;
+  border-top:1px solid var(--accent);
+  border-bottom:4px double var(--accent);
   position:relative;overflow:hidden;
-}
-.accent-band::before{
-  content:'"';
-  font-family:'Playfair Display',serif;
-  font-size:200px;font-weight:900;
-  color:rgba(200,146,42,0.06);
-  position:absolute;left:-20px;top:-50px;line-height:1;
-  pointer-events:none;
 }
 .band-headline{
   font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:900;font-style:italic;
-  color:var(--accent-light);
+  font-size:22px;font-weight:700;font-style:italic;
+  color:var(--paper-light);
+  letter-spacing:-0.01em;
 }
 .band-sub{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:12px;color:var(--accent);
-  letter-spacing:0.1em;text-transform:uppercase;
+  font-family:'Playfair Display SC',serif;
+  font-size:12px;color:var(--accent-faded);
+  letter-spacing:0.12em;text-transform:uppercase;
   text-align:right;
 }
 
-/* ─── TIMELINE ─── */
+/* ─── HISTORIC TIMELINE CHRONOLOGY ─── */
 .timeline{position:relative;padding-left:28px;}
 .timeline::before{
   content:'';position:absolute;left:8px;top:0;bottom:0;
-  width:1px;background:var(--rule);
+  width:1px;background:var(--ink);
 }
 .tl-item{
-  position:relative;margin-bottom:20px;
+  position:relative;margin-bottom:24px;
   opacity:0;transform:translateX(16px);
   transition:opacity 0.6s ease,transform 0.6s ease;
 }
 .tl-item.visible{opacity:1;transform:translateX(0);}
 .tl-dot{
   position:absolute;left:-24px;top:4px;
-  width:12px;height:12px;border-radius:50%;
-  background:var(--cream);border:2px solid var(--ink);
+  width:10px;height:10px;border-radius:0%; /* Square geometric nodes */
+  background:var(--paper);border:2px solid var(--ink);
 }
-.tl-dot.gold{background:var(--accent);border-color:var(--accent2);}
+.tl-dot.gold{background:var(--accent);border-color:var(--ink);}
 .tl-year{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--ink4);margin-bottom:2px;
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;letter-spacing:0.1em;
+  color:var(--accent);margin-bottom:4px;
 }
 .tl-title{
   font-family:'Playfair Display',serif;
-  font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px;
+  font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;
 }
 .tl-desc{
   font-family:'Libre Baskerville',serif;
-  font-size:12px;color:var(--ink2);line-height:1.6;
+  font-size:12.5px;color:var(--ink);line-height:1.65;
 }
 
-/* ─── ACTIVITY GRAPH ─── */
+/* ─── PLOT CONTRIBUTION MAP ─── */
 .graph-wrap{
-  border:1px solid var(--rule);
-  background:var(--cream);
-  padding:16px;
-  margin-top:0;
+  border:1px solid var(--ink);
+  background:var(--paper-light);
+  padding:20px;
 }
-.graph-wrap img{width:100%;display:block;border:1px solid var(--col-border);}
+.graph-wrap img{width:100%;display:block;border:1px solid var(--ink);filter:sepia(40%) contrast(110%);}
 
-/* ─── FOOTER ─── */
+/* ─── FINAL FOOTER ARCHIVE ─── */
 .gazette-footer{
   background:var(--ink);
-  padding:20px 36px;
+  padding:24px 40px;
   display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:10px;
+  flex-wrap:wrap;gap:12px;
   border-top:4px solid var(--accent);
 }
 .footer-gazette{
-  font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:900;color:var(--accent-light);
+  font-family:'UnifrakturMaguntia',serif;
+  font-size:26px;color:var(--paper-light);
 }
 .footer-meta{
-  font-family:'IM Fell DW Pica',serif;
-  font-size:11px;color:var(--accent);letter-spacing:0.1em;text-align:right;
+  font-family:'Playfair Display SC',serif;
+  font-size:11px;color:var(--accent-faded);letter-spacing:0.08em;text-align:right;line-height:1.6;
 }
 
-/* ─── SCROLL REVEAL ─── */
+/* ─── SCROLL ANIMATIONS ─── */
 .reveal{
   opacity:0;transform:translateY(20px);
   transition:opacity 0.7s ease,transform 0.7s ease;
 }
 .reveal.visible{opacity:1;transform:translateY(0);}
 
-/* ─── RESPONSIVE ─── */
+/* ─── RESPONSIVE COMPACT ENGINES ─── */
+@media(max-width:900px){
+  .body{column-count:2;}
+}
 @media(max-width:700px){
   .hero-grid,.cols-3,.cols-2,.cols-2-eq{grid-template-columns:1fr;}
   .col{border-right:none;border-bottom:1px solid var(--col-border);}
@@ -539,7 +526,7 @@ body::after{
   .hero-sidebar{padding:20px 0;}
   .body{column-count:1;}
   .stats-row{grid-template-columns:repeat(3,1fr);}
-  .gazette-title{font-size:52px;}
+  .gazette-title{font-size:48px;}
   .masthead-meta,.byline-strip{padding-left:16px;padding-right:16px;}
   .page{padding:0 16px 60px;}
   .accent-band{padding:16px 20px;}
@@ -548,38 +535,35 @@ body::after{
 </head>
 <body>
 
-<!-- ─── BREAKING TICKER ─── -->
 <div class="ticker">
   <div class="ticker-inner" id="ticker">
-    <span>⬛ KOMMI NITHIN &mdash; AI + FULL-STACK ENGINEER, SRM UNIVERSITY-AP</span>
-    <span class="ticker-sep">✦</span>
+    <span>❦ KOMMI NITHIN &mdash; AI + FULL-STACK ENGINEER, SRM UNIVERSITY-AP</span>
+    <span class="ticker-sep">❖</span>
     <span>MENTOR AI UNIBOT: PRODUCTION RAG SYSTEM WITH VOICE, FILE ANALYSIS & MULTI-MODEL ROUTING</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>QUANTUMRAG: DOES QUANTUM BEAT CLASSICAL RETRIEVAL? ONGOING RESEARCH</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>OPEN TO COLLABORATION &bull; NithinkMahendra@gmail.com</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>23 PUBLIC REPOSITORIES &bull; PULL SHARK ACHIEVEMENT UNLOCKED</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>STACK: NEXT.JS · FASTAPI · PYTHON · LANGCHAIN · OLLAMA · MONGODB · TYPESCRIPT</span>
-    <span class="ticker-sep">✦</span>
-    <!-- duplicate for seamless loop -->
-    <span>⬛ KOMMI NITHIN &mdash; AI + FULL-STACK ENGINEER, SRM UNIVERSITY-AP</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
+    <span>❦ KOMMI NITHIN &mdash; AI + FULL-STACK ENGINEER, SRM UNIVERSITY-AP</span>
+    <span class="ticker-sep">❖</span>
     <span>MENTOR AI UNIBOT: PRODUCTION RAG SYSTEM WITH VOICE, FILE ANALYSIS & MULTI-MODEL ROUTING</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>QUANTUMRAG: DOES QUANTUM BEAT CLASSICAL RETRIEVAL? ONGOING RESEARCH</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>OPEN TO COLLABORATION &bull; NithinkMahendra@gmail.com</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>23 PUBLIC REPOSITORIES &bull; PULL SHARK ACHIEVEMENT UNLOCKED</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
     <span>STACK: NEXT.JS · FASTAPI · PYTHON · LANGCHAIN · OLLAMA · MONGODB · TYPESCRIPT</span>
-    <span class="ticker-sep">✦</span>
+    <span class="ticker-sep">❖</span>
   </div>
 </div>
 
-<!-- ─── MASTHEAD ─── -->
 <div class="masthead">
   <div class="masthead-meta">
     <span>Established 2023 &bull; SRM University-AP, Amaravati, Andhra Pradesh</span>
@@ -588,28 +572,24 @@ body::after{
   </div>
   <div class="masthead-title-wrap">
     <div class="edition-flag">The Builder's Gazette</div>
-    <div class="title-ornament">&#10022; Forged in Code &bull; Tempered in Intelligence &#10022;</div>
-    <div class="gazette-title" id="gtitle">KOMMI NITHIN</div>
+    <div class="title-ornament">❖ Forged in Code &bull; Tempered in Intelligence ❖</div>
+    <div class="gazette-title" id="gtitle">Kommi Nithin</div>
     <div class="gazette-sub">"Build Intelligently &mdash; Ship Beautifully &mdash; Think Deeply"</div>
   </div>
   <div class="masthead-rule-set">
     <div class="rule-thick"></div>
-    <div class="rule-accent"></div>
     <div class="rule-thin"></div>
   </div>
 </div>
 
-<!-- ─── BYLINE STRIP ─── -->
 <div class="byline-strip">
   <span>AI ENGINEER &amp; FULL-STACK DEVELOPER</span>
   <span>B.TECH CSE &bull; GRADUATING 2027</span>
   <span>github.com/KOMMINITHIN</span>
 </div>
 
-<!-- ─── PAGE ─── -->
 <div class="page">
 
-  <!-- ════ HERO SECTION ════ -->
   <div class="section" style="padding-top:28px;">
     <div class="section-label">
       <div class="section-label-text">Front Page</div>
@@ -618,7 +598,6 @@ body::after{
     </div>
 
     <div class="hero-grid reveal">
-      <!-- MAIN STORY -->
       <div class="hero-main">
         <div class="kicker">Profile &bull; Intelligence & Interface</div>
         <h1 class="headline-xl">
@@ -633,13 +612,12 @@ body::after{
           <p>The QuantumRAG project exemplifies his ambition. While the broader community debates which classical RAG architecture retrieves fastest, Nithin asks whether quantum-enhanced retrieval can outperform them all — not as a thought experiment, but as a Jupyter-backed empirical research program.</p>
           <p>Alongside the AI work, he builds full-stack products. CONART, a creative platform in TypeScript. Mailcraft, an LLM-powered email assistant. Patrol, a JavaScript project. Each a different muscle group, trained in parallel.</p>
         </div>
-        <div class="tw-block" style="margin-top:20px;">
+        <div class="tw-block" style="margin-top:24px;">
           <span class="tw-prompt">nithin@srmap:~$</span>
           <span id="tw-text"></span>
         </div>
       </div>
 
-      <!-- SIDEBAR -->
       <div class="hero-sidebar">
         <div class="avatar-block">
           <div class="avatar-frame">
@@ -655,21 +633,21 @@ body::after{
         </div>
         <div class="fact-rule"></div>
 
-        <div style="margin-bottom:10px;">
+        <div style="margin-bottom:12px;">
           <div class="fact-label">University</div>
           <div class="fact-value">SRM University-AP</div>
           <div class="fact-small">Amaravati, Andhra Pradesh</div>
         </div>
         <div class="fact-rule"></div>
-        <div style="margin-bottom:10px;">
+        <div style="margin-bottom:12px;">
           <div class="fact-label">Degree</div>
           <div class="fact-value">B.Tech Computer Science</div>
           <div class="fact-small">Class of 2027 &bull; 3rd Year</div>
         </div>
         <div class="fact-rule"></div>
-        <div style="margin-bottom:10px;">
+        <div style="margin-bottom:12px;">
           <div class="fact-label">Achievement</div>
-          <div class="fact-value">&#9875; Pull Shark</div>
+          <div class="fact-value">❖ Pull Shark</div>
           <div class="fact-small">Open source contributor &bull; 23 public repos</div>
         </div>
         <div class="fact-rule"></div>
@@ -682,7 +660,6 @@ body::after{
     </div>
   </div>
 
-  <!-- ════ STATS ROW ════ -->
   <div class="stats-row reveal">
     <div class="stat-cell">
       <div class="stat-num gold" data-target="23">0</div>
@@ -706,7 +683,6 @@ body::after{
     </div>
   </div>
 
-  <!-- ════ TECH + PROJECTS ════ -->
   <div class="section">
     <div class="section-label">
       <div class="section-label-text">Craft &amp; Projects</div>
@@ -714,7 +690,6 @@ body::after{
     </div>
     <div class="cols-3 reveal">
 
-      <!-- TECH STACK -->
       <div class="col">
         <div class="col-label gold">The Instruments</div>
         <div class="col-headline italic">A polyglot builder across the full vertical</div>
@@ -758,7 +733,6 @@ body::after{
         </div>
       </div>
 
-      <!-- PROFICIENCY BARS -->
       <div class="col">
         <div class="col-label">Proficiency Report</div>
         <div class="col-headline">Skills assessed by depth of use</div>
@@ -798,7 +772,6 @@ body::after{
         </div>
       </div>
 
-      <!-- PROJECTS -->
       <div class="col">
         <div class="col-label">Featured Works</div>
 
@@ -840,7 +813,6 @@ body::after{
     </div>
   </div>
 
-  <!-- ════ ACCENT BAND ════ -->
   <div class="accent-band reveal">
     <div>
       <div class="band-headline">"The best time to build was yesterday. The second best time is in production by tomorrow."</div>
@@ -851,7 +823,6 @@ body::after{
     </div>
   </div>
 
-  <!-- ════ JOURNEY TIMELINE + CURRENTLY BUILDING ════ -->
   <div class="section">
     <div class="section-label">
       <div class="section-label-text">Chronicle &amp; Workbench</div>
@@ -859,7 +830,6 @@ body::after{
     </div>
     <div class="cols-2 reveal">
 
-      <!-- TIMELINE -->
       <div class="col">
         <div class="col-label gold">The Journey So Far</div>
         <div class="timeline">
@@ -908,7 +878,6 @@ body::after{
         </div>
       </div>
 
-      <!-- CURRENTLY BUILDING -->
       <div class="col">
         <div class="col-label">On the Workbench Now</div>
         <div class="col-headline italic">Four fronts, active simultaneously</div>
@@ -946,18 +915,16 @@ body::after{
     </div>
   </div>
 
-  <!-- ════ ACTIVITY GRAPH ════ -->
   <div class="section reveal">
     <div class="section-label">
       <div class="section-label-text">Contribution Record</div>
       <div class="section-label-line"></div>
     </div>
     <div class="graph-wrap">
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=KOMMINITHIN&theme=minimal&hide_border=true&bg_color=f5f0e8&color=111008&line=c8922a&point=2d2a1e&area=true&area_color=f7e9cc&title_color=111008" alt="GitHub activity graph — Kommi Nithin"/>
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=KOMMINITHIN&theme=minimal&hide_border=true&bg_color=f2e9da&color=1c1a12&line=9e7223&point=1c1a12&area=true&area_color=ded2ba&title_color=1c1a12" alt="GitHub activity graph — Kommi Nithin"/>
     </div>
   </div>
 
-  <!-- ════ CONTACT + CLOSING ════ -->
   <div class="section-last">
     <div class="section-label">
       <div class="section-label-text">Contact &amp; Directories</div>
@@ -974,7 +941,7 @@ body::after{
           <tr><td>Discord</td><td><a href="https://discordapp.com/users/1384805285536989254" target="_blank">KOMMINITHIN</a></td></tr>
           <tr><td>LeetCode</td><td><a href="https://leetcode.com/NithinkMahendra" target="_blank">NithinkMahendra</a></td></tr>
         </table>
-        <div style="margin-top:18px;background:var(--paper2);border:1px solid var(--col-border);padding:14px 16px;">
+        <div style="margin-top:18px;background:var(--paper-dark);border:1px solid var(--ink);padding:14px 16px;">
           <div class="fact-label" style="margin-bottom:6px;">Open to</div>
           <div class="tag-list">
             <span class="tag gold">Collaborations</span>
@@ -1005,7 +972,6 @@ body::after{
 
 </div>
 
-<!-- ─── FOOTER ─── -->
 <div class="gazette-footer">
   <div class="footer-gazette">The Builder's Gazette</div>
   <div class="footer-meta">
