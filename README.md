@@ -63,20 +63,20 @@ Alongside the AI work, he builds full-stack products. **CONART**, a creative pla
 
 ***
 
-**🏛️ ACADEMIC STATION**
+** ACADEMIC STATION**
 SRM University-AP
 <sub>Amaravati, Andhra Pradesh</sub>
 
-**📜 DEGREE ON RECORD**
+** DEGREE ON RECORD**
 B.Tech Computer Science
 <sub>3rd Year • Graduating 2027</sub>
 
-**🏆 ADMIRALTY MARKS**
+** ADMIRALTY MARKS**
 ⚓ **Pull Shark Achievement**
 <sub>Open source contributor</sub>
 <sub>23 Public Repositories</sub>
 
-**🎯 VERTICAL SPECIALISATION**
+** VERTICAL SPECIALISATION**
 RAG Systems · LLM Pipelines
 Full-Stack Web · Quantum ML
 
@@ -94,13 +94,13 @@ Full-Stack Web · Quantum ML
 
 <br>
 
-## 🛠️ THE WORKBENCH & CRAFT DESPATCH
+##  THE WORKBENCH & CRAFT DESPATCH
 
 <table>
 <tr>
 <td width="33.3%" valign="top">
 
-### 🧪 𝕿𝖍𝖊 𝕴𝖓𝖘𝖙𝖗𝖚𝖒𝖊𝖓𝖙𝖘
+###  𝕿𝖍𝖊 𝕴𝖓𝖘𝖙𝖗𝖚𝖒𝖊𝖓𝖙𝖘
 *Polyglot vectors deployed cross-logistically.*
 
 <br>
@@ -116,7 +116,7 @@ Full-Stack Web · Quantum ML
 </td>
 <td width="33.3%" valign="top">
 
-### 📈 𝕻𝖗𝖔𝖋𝖎𝖈𝖎𝖊𝖓𝖖𝖞 𝕽𝖊𝖕𝖔𝖗𝖙
+###  𝕻𝖗𝖔𝖋𝖎𝖈𝖎𝖊𝖓𝖖𝖞 𝕽𝖊𝖕𝖔𝖗𝖙
 *Assessed strictly by depth of critical production use.*
 
 * **Python & AI Architectures**
@@ -135,7 +135,7 @@ Full-Stack Web · Quantum ML
 </td>
 <td width="33.3%" valign="top">
 
-### 🗃️ 𝕱𝖊𝖆𝖙𝖚𝖗𝖊𝖉 𝖂𝖔𝖗𝖐𝖘
+###  𝕱𝖊𝖆𝖙𝖚𝖗𝖊𝖉 𝖂𝖔𝖗𝖐𝖘
 *Highly notable blueprints from the public repository.*
 
 1. **[MENTOR AI — Unibot](https://github.com/KOMMINITHIN/MENTOR_AI_-unibot-_SRMAP)**
@@ -153,7 +153,7 @@ Full-Stack Web · Quantum ML
 
 <br>
 
-## 📜 THE CHRONICLE & WORKBENCH HISTORY
+##  THE CHRONICLE & WORKBENCH HISTORY
 
 <table>
 <tr>
@@ -190,7 +190,7 @@ Full-Stack Web · Quantum ML
 
 <br>
 
-## 📈 PUBLIC CONTRIBUTION GRAPH
+##  PUBLIC CONTRIBUTION GRAPH
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=KOMMINITHIN&theme=minimal&hide_border=true&bg_color=e9dfcc&color=1c1a12&line=9e7223&point=1c1a12&area=true&area_color=ded2ba&title_color=1c1a12" alt="Archival Activity Matrix" width="100%"/>
 </div>
@@ -203,7 +203,7 @@ Full-Stack Web · Quantum ML
 <tr>
 <td width="50%" valign="top">
 
-### 🏛️ Public Registries & Ledgers
+###  Public Registries & Ledgers
 
 <br>
 
@@ -226,7 +226,7 @@ Full-Stack Web · Quantum ML
 </td>
 <td width="50%" valign="top">
 
-### ✉️ Direct Postal Correspondence
+###  Direct Postal Correspondence
 
 <br>
 
@@ -239,7 +239,7 @@ Full-Stack Web · Quantum ML
 <sub>Pictorial Wire Broadcast</sub>
 
 ***
-**📥 OPEN FOR IMMEDIATE DEPLOYMENT:**
+** OPEN FOR IMMEDIATE DEPLOYMENT:**
 `Research Positions` · `Software Engineering Internships` · `Open Source Ventures` · `Ambitious AI Collaborations`
 
 </td>
